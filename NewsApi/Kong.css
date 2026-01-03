@@ -1,0 +1,69 @@
+.card-component{
+    width: 100%;
+    height: 100%;
+}
+
+.inner-card{
+    background: linear-gradient(45deg, rgba(24,240,179,0.5), rgba(46, 73, 225, 0.5));
+     width: 75vw;
+    height: 100%;
+    margin-left: 140px;
+    margin-right: 140px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+.cards{
+    width: 310px;
+    height: 350px;
+    background-color: rgb(235, 226, 243);
+    border-radius: 12px;
+    /* margin-top: 20px; */
+    transform: scale(0.9);
+    transition: ease-in-out .3s;
+    cursor: pointer;
+}
+
+.cards:nth-child(2){
+    background-color: burlywood;
+}
+.cards:nth-child(3){
+    background-color: skyblue;
+}
+.cards:nth-child(4){
+    background-color: rosybrown;
+}
+.cards:nth-child(5){
+    background-color: lightgreen;
+}
+
+.cards:hover{
+    transform: scale(1);
+    margin: 0 8px;
+}
+
+/* this is for line control in heading or paragraph */
+
+.truncate-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
