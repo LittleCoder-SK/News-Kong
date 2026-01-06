@@ -50,7 +50,7 @@ const Render = (articles) => {
     const cards = card.cloneNode(true);
     cards.classList.remove('hidden')
 
-    cards.querySelector('img').src = val.urlToImage ? val.urlToImage : "/Api/naruto.jpg";
+    cards.querySelector('img').src = val.urlToImage ? val.urlToImage : "/naruto.jpg";
     cards.querySelector('h4').innerHTML = val.title;
     cards.querySelector('p').innerHTML = val.description ? val.description : "empty details";
     cards.querySelector('a').href = val.url;
@@ -66,6 +66,8 @@ const Render = (articles) => {
 // Go bact to the previous page
 const Prevpage = () => {
 
+
+
   if (currentPage <= 1) return;
   currentPage--
   FetchData(currentPage);
@@ -77,14 +79,19 @@ const Nextpage = () => {
   if (currentPage >= totalPages) return;
   currentPage++
   FetchData(currentPage);
-  console.log('page', currentPage)
 
 }
 
-// this is for disabling button if below condition are satisfied
+// this is for disabling or bg-color change to button if below the condition are satisfied
 function updateControls() {
-  document.getElementById("Prev").disabled = currentPage === 1;
-  document.getElementById("Next").disabled = currentPage === totalPages;
+  let prev = document.getElementById("Prev")
+  prev.disabled = currentPage === 1;
+  if (currentPage == 1 ? prev.style.background = "darkgray" : prev.style.background = "black");
+
+
+  let next = document.getElementById("Next");
+  next.disabled = currentPage === totalPages;
+  if (currentPage === totalPages ? next.style.background = "darkgray" : next.style.background = "black");
 }
 
 
