@@ -4,7 +4,7 @@
 }
 
 .inner-card{
-    background: linear-gradient(45deg, rgba(24,240,179,0.5), rgba(46, 73, 225, 0.5));
+    /* background: linear-gradient(45deg, rgba(24,240,179,0.5), rgba(46, 73, 225, 0.5)); */
      width: 75vw;
     height: 100%;
     margin-left: 140px;
@@ -23,7 +23,7 @@
     background-color: rgb(235, 226, 243);
     border-radius: 12px;
     /* margin-top: 20px; */
-    transform: scale(0.9);
+    transform: scale(0.8);
     transition: ease-in-out .3s;
     cursor: pointer;
 }
@@ -42,7 +42,7 @@
 }
 
 .cards:hover{
-    transform: scale(1);
+    transform: scale(0.9);
     margin: 0 8px;
 }
 
