@@ -4,15 +4,19 @@ let currentPage = 1;
 const PAGE_SIZE = 6;
 let totalPages = 1;
 let isLoading = false;
+let currentCategory = "general";
 
 
 const innercard = document.getElementById('inner-card');
 const card = document.getElementById('cards');
 const loader = document.getElementById('loader')
+const navlist = document.querySelectorAll('.nav-item')
+
+
 
 
 // this function is fetching data from Api
-const FetchData = async (page) => {
+const FetchData = async (page, currentCategory) => {
 
   if (isLoading) return;
   isLoading = true;
@@ -20,7 +24,7 @@ const FetchData = async (page) => {
 
 
   try {
-    let api = `https://newsapi.org/v2/top-headlines?country=us&page=${page}&pageSize=${PAGE_SIZE}&apiKey=${Key}`
+    let api = `https://newsapi.org/v2/top-headlines?country=us&category=${currentCategory}&page=${page}&pageSize=${PAGE_SIZE}&apiKey=${Key}`
     let response = await fetch(api)
     let data = await response.json()
 
@@ -55,22 +59,40 @@ const Render = (articles) => {
     cards.querySelector('p').innerHTML = val.description ? val.description : "empty details";
     cards.querySelector('a').href = val.url;
 
-    innercard.append(cards)
-
-
+    innercard.append(cards);
   });
 }
 
+
+// navigate the news category wise
+navlist.forEach(function (item) {
+
+  item.addEventListener("click", function () {
+
+    navlist.forEach(i =>
+      i.classList.remove("bg-indigo-500", "text-white", "scale-105")
+    );
+
+    item.classList.add("bg-indigo-500", "text-white", "scale-105");
+
+    //when you navigate using category every time news fetch on currentPage 1
+    currentPage = 1
+
+    currentCategory = item.innerText;
+    console.log(currentCategory)
+    FetchData(currentPage, currentCategory);
+
+  });
+
+})
 
 
 // Go bact to the previous page
 const Prevpage = () => {
 
-
-
   if (currentPage <= 1) return;
   currentPage--
-  FetchData(currentPage);
+  FetchData(currentPage, currentCategory);
 }
 
 // Go to the next page
@@ -78,7 +100,7 @@ const Nextpage = () => {
 
   if (currentPage >= totalPages) return;
   currentPage++
-  FetchData(currentPage);
+  FetchData(currentPage, currentCategory);
 
 }
 
@@ -97,5 +119,5 @@ function updateControls() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  FetchData(currentPage);
+  FetchData(currentPage, currentCategory);
 });
