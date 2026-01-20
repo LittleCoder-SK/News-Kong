@@ -90,7 +90,7 @@ navlist.forEach(function (item) {
 const infinitScroll = () => {
   window.addEventListener("scroll", () => {
     const scrollPos = window.innerHeight + window.scrollY;
-    const threshold = document.body.offsetHeight * 0.9;
+    const threshold = document.body.offsetHeight * 1;
 
     if (scrollPos >= threshold && !isLoading && currentPage < totalPages) {
       currentPage++;
