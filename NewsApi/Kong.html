@@ -61,18 +61,26 @@
     <!-- end cards component -->
 
     <!-- button start -->
-    <div class="butt flex justify-around mb-2 w-full z-10">
+
+    <!-- <div class="butt flex justify-around mb-2 w-full z-10">
       <button class="px-4 py-2 text-[17px] rounded-md text-white cursor-pointer" id="Prev" onclick="Prevpage()">&larr;
         Prev</button>
       <button class="px-4 py-2 text-[17px] rounded-md text-white cursor-pointer" id="Next" onclick="Nextpage()">Next
         &rarr;</button>
-    </div>
+    </div> -->
+
     <!-- button end -->
 
     <!-- loader -->
     <div id="loader" class="fixed inset-0 bg-black/30 flex items-center justify-center hidden z-50">
       <div class="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
     </div>
+
+    <!-- back to top button -->
+    <button id="backToTop"
+      class="opacity-0 fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 hover:bg-blue-700 cursor-pointer">
+      Back to Top
+    </button>
 
 
 
