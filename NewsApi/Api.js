@@ -31,7 +31,7 @@ const FetchData = async (page, currentCategory) => {
     totalPages = Math.ceil(data.totalResults / PAGE_SIZE)
 
     Render(data.articles)
-    updateControls()
+    // updateControls()
   }
   catch {
     console.error('fetcing is successd but dom milead...')
@@ -87,19 +87,17 @@ navlist.forEach(function (item) {
 
 })
 
-const infinitScroll = () =>{
- window.addEventListener("scroll", () => {
-  const scrollPos = window.innerHeight + window.scrollY;
-  const threshold = document.body.offsetHeight * 0.8;
+const infinitScroll = () => {
+  window.addEventListener("scroll", () => {
+    const scrollPos = window.innerHeight + window.scrollY;
+    const threshold = document.body.offsetHeight * 0.9;
 
-  if (scrollPos >= threshold && !isLoading && currentPage < totalPages) {
-    currentPage++;
-    FetchData(currentPage, currentCategory);
-  }
-});
+    if (scrollPos >= threshold && !isLoading && currentPage < totalPages) {
+      currentPage++;
+      FetchData(currentPage, currentCategory);
+    }
+  });
 }
-
-infinitScroll()
 
 
 // Go bact to the previous page
@@ -120,40 +118,43 @@ infinitScroll()
 // }
 
 // this is for disabling or bg-color change to button if below the condition are satisfied
-function updateControls() {
-  let prev = document.getElementById("Prev")
-  prev.disabled = currentPage === 1;
-  if (currentPage == 1 ? prev.style.background = "darkgray" : prev.style.background = "black");
+// function updateControls() {
+//   let prev = document.getElementById("Prev")
+//   prev.disabled = currentPage === 1;
+//   if (currentPage == 1 ? prev.style.background = "darkgray" : prev.style.background = "black");
 
 
-  let next = document.getElementById("Next");
-  next.disabled = currentPage === totalPages;
-  if (currentPage === totalPages ? next.style.background = "darkgray" : next.style.background = "black");
-}
+//   let next = document.getElementById("Next");
+//   next.disabled = currentPage === totalPages;
+//   if (currentPage === totalPages ? next.style.background = "darkgray" : next.style.background = "black");
+// }
 
-const backToTop = document.getElementById("backToTop");
+const goBacktoTop = () => {
+  const backToTop = document.getElementById("backToTop");
 
-// Show button when scrolling down
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTop.classList.remove("hidden");
-    backToTop.classList.add("opacity-100");
-  } else {
-    backToTop.classList.add("hidden");
-  }
-});
-
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  // Show button when scrolling down
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.remove("hidden");
+      backToTop.classList.add("opacity-100");
+    } else {
+      backToTop.classList.add("hidden");
+    }
   });
-});
 
+  // Smooth scroll to top
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
 
+};
 
 
 document.addEventListener("DOMContentLoaded", () => {
   FetchData(currentPage, currentCategory);
+  infinitScroll()
+  goBacktoTop()
 });
