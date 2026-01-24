@@ -39,12 +39,6 @@ news-kong/
 ![Backbutton](screenshot/backbutton.png)
 ![Category View](screenshot/category1.png)
 ![Category View](screenshot/category2.png)
-
-<p align="center">
-  <img src="screenshots/home.png" width="45%" />
-  <img src="screenshots/category.png" width="45%" />
-</p>
-
 ```
 
 ## ✨ Use Cases
