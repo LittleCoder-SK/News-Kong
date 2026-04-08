@@ -14,11 +14,11 @@
 <body>
 
   <!-- navbar component -->
-  <header class="bg-black w-full h-full flex justify-around sticky top-0 z-[100]">
+  <div class="bg-black @md:max-w-full @md:h-auto flex justify-around sticky top-0 z-[100] @sm:w-full @sm:h-auto">
     <img src="/kong.png" alt="sk img" class="w-11 h-11 rounded-full bg-white py-1 px-1 flex mt-1 mb-1">
     <nav
       class="flex list-none gap-4 py-2.5 font-serif text-2xl font-medium text-white outline-light-100 cursor-pointer">
-      <ul class="flex gap-1 text-xl font-normal">
+      <ul class="flex gap-1 text-xl font-normal sm:hidden md:flex">
         <li class="nav-item px-2">general</li>
         <li class="nav-item px-2">entertainment</li>
         <li class="nav-item px-2">health</li>
@@ -27,8 +27,13 @@
         <li class="nav-item px-2">sports</li>
         <li class="nav-item px-2">technology</li>
       </ul>
+      <!-- hambugger -->
+      <div class="md:hidden sm:block text-2xl">
+        <a id="metaMenu" href="#">&#9776;</a>
+      </div>
+
     </nav>
-  </header>
+  </div>
 
   <!-- main card component -->
 
